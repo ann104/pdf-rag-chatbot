@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>PDFMind AI</title>
+
+    <link rel="stylesheet"
+          href="/static/css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="hero">
+
+    <h1>📄 PDFMind AI</h1>
+
+    <p>
+        Chat with any PDF using Artificial Intelligence
+    </p>
+
+</div>
+
+<div class="features-inline">
+
+    <span> Instant Retrieval</span>
+
+    <span>|</span>
+
+    <span> AI Powered</span>
+
+    <span>|</span>
+
+    <span> Private & Secure</span>
+
+</div>
+
+            <form
+                action="/upload"
+                method="post"
+                enctype="multipart/form-data">
+
+                <input
+                    type="file"
+                    id="pdf"
+                    name="pdf"
+                    required
+                    hidden>
+
+                <label for="pdf" class="upload-box">
+
+                    <div class="upload-icon">
+                        ☁
+                    </div>
+
+                    <h3>Drop your PDF here</h3>
+
+                    <p>or click to browse</p>
+
+                </label>
+
+                <button type="submit">
+                    Upload PDF
+                </button>
+
+            </form>
+
+            <div class="supported-files">
+
+                <h3>Supports</h3>
+
+                <div class="badges">
+
+                    <span>📚 Research Papers</span>
+
+                    <span>📖 Books</span>
+
+                    <span>📝 Notes</span>
+
+                    <span>📊 Reports</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const pdfInput = document.getElementById("pdf");
+
+        const uploadBox = document.querySelector(".upload-box");
+
+        pdfInput.addEventListener("change", function(){
+
+            if(pdfInput.files.length > 0){
+
+                uploadBox.innerHTML = `
+                    <div class="upload-icon">📄</div>
+                    <h3>${pdfInput.files[0].name}</h3>
+                    <p>Ready to upload</p>
+                `;
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

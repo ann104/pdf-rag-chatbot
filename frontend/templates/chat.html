@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>PDFMind AI</title>
+
+    <link rel="stylesheet"
+          href="/static/css/style.css">
+
+</head>
+<script>
+
+const chatWindow = document.querySelector(".chat-window");
+
+chatWindow.scrollTop = chatWindow.scrollHeight;
+
+</script>
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>📄 PDFMind AI</h1>
+
+        <p class="subtitle">
+            Chat with your uploaded PDF
+        </p>
+        <form action="/new-chat" method="post">
+
+    <button class="new-chat-btn">
+
+        🔄 New Chat
+
+    </button>
+
+</form>
+
+<br>
+
+        <div class="chat-window">
+
+            {% if chat_history %}
+
+                {% for chat in chat_history %}
+
+                    <div class="user-message">
+
+                        👤 {{ chat.question }}
+
+                    </div>
+
+                    <div class="bot-message">
+
+                        🤖
+
+                        <pre>{{ chat.answer }}</pre>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="bot-message">
+
+                    👋 Hi! Ask me anything about your PDF.
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <form action="/ask" method="post">
+
+            <input
+                type="text"
+                name="question"
+                placeholder="Ask something about your PDF..."
+                required>
+
+            <br><br>
+
+            <button type="submit">
+
+                Ask AI
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
